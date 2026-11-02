@@ -1,0 +1,196 @@
+{
+  "config": {
+    "data_root": "/kaggle/input/datasets/bhavanamohod/final-mm-features/mm-dataset",
+    "manifest": "multimodal_master_dataset_pruned.csv",
+    "endo_instance": "endo_instance_feat.parquet",
+    "rad_feat": "rad_sequence_feat.parquet",
+    "pet_feat": "pet_sequence_feat.parquet",
+    "geno_feat": "genomics_snn_feat.parquet",
+    "out_dir": "/kaggle/working/esca_sci",
+    "id_col": "Patient_ID",
+    "label_col": "Unified_Diagnosis_Merged",
+    "pos_label": "Barrett's Esophagus",
+    "neg_label": "Normal",
+    "label_from_id": {
+      "positive": "^EN-BE",
+      "negative": "^EN-NZ"
+    },
+    "group_auto_offset": true,
+    "group_sim_threshold": 0.9,
+    "eval_one_per_group": true,
+    "seeds": [
+      42,
+      123,
+      223,
+      323,
+      423
+    ],
+    "n_folds": 5,
+    "test_frac": 0.2,
+    "split_seed": 2026,
+    "aggregators": [
+      "mean",
+      "max",
+      "gated",
+      "transmil",
+      "gated_sa"
+    ],
+    "final_aggregator": "auto",
+    "d_hidden": 256,
+    "d_att": 128,
+    "epochs": 40,
+    "batch": 64,
+    "lr": 0.0005,
+    "weight_decay": 0.01,
+    "warmup_epochs": 3,
+    "label_smoothing": 0.05,
+    "ema_decay": 0.99,
+    "inst_drop": 0.1,
+    "feat_noise": 0.05,
+    "mc_samples": 50,
+    "amp": true,
+    "bootstrap_n": 2000,
+    "ece_bins": 15,
+    "alphas": [
+      0.05,
+      0.1,
+      0.15,
+      0.2,
+      0.3
+    ],
+    "target_sensitivity": 0.95,
+    "abstain_coverage": 0.9,
+    "gv_root": "/kaggle/input/datasets/orvile/gastrovision-gastrointestinal-disease-detection/Gastrovision",
+    "gv_feature_file": "/kaggle/working/esca_sci/external/gastrovision_instances.parquet",
+    "gv_folders": {
+      "barretts": [
+        "barrett"
+      ],
+      "zline": [
+        "z-line",
+        "z line",
+        "zline"
+      ],
+      "normal_esophagus": [
+        "normal esophagus",
+        "normal oesophagus"
+      ],
+      "esophagitis": [
+        "esophagitis",
+        "oesophagitis"
+      ]
+    },
+    "phash_hamming": 0,
+    "leakage_sim": 0.98,
+    "local_recal_frac": 0.3,
+    "local_recal_reps": 200,
+    "s2_require_genomics": true,
+    "s2_id_prefix": "TCGA",
+    "s2_drop_unknown_stage": true,
+    "s2_stage_col": "AJCC_Pathologic_Stage",
+    "s2_ensemble_seeds": 3,
+    "s2_outer_folds": 5,
+    "s2_repeats": 3,
+    "s2_epochs": 60,
+    "s2_lr": 0.0003,
+    "s2_weight_decay": 0.05,
+    "s2_modality_drop": 0.15,
+    "device": "cuda"
+  },
+  "grouping": {
+    "offset_pairs": 1017,
+    "nn_pairs": 1017,
+    "offset_rules": [
+      {
+        "prefix": "EN-BE-",
+        "offset": 94,
+        "pairs_tested": 94,
+        "pairs_accepted": 94,
+        "median_pair_sim": 1.0,
+        "q99_random_sim": 0.9219039678573608
+      },
+      {
+        "prefix": "EN-NZ-",
+        "offset": 932,
+        "pairs_tested": 923,
+        "pairs_accepted": 923,
+        "median_pair_sim": 1.0,
+        "q99_random_sim": 0.9168713092803955
+      }
+    ],
+    "n_records": 2034,
+    "n_groups": 1017,
+    "group_size_counts": {
+      "2": 1017
+    },
+    "nn_sim_median": 1.0
+  },
+  "final_aggregator": "mean",
+  "calibrator": "platt",
+  "calibrator_cv_nll": {
+    "temperature": 0.20448671966349355,
+    "platt": 0.19163139208555935,
+    "beta": 0.19183931730617276
+  },
+  "summary": {
+    "test_raw": {
+      "AUROC": 0.9140825035561878,
+      "AUPRC": 0.5685405402156136,
+      "Brier": 0.06221250086024031,
+      "ECE": 0.07998492454836036,
+      "MCE": 0.2014695405960083,
+      "prevalence": 0.09313725490196079,
+      "n": 204,
+      "AUROC_CI": [
+        0.8543314366998578,
+        0.9669985775248933
+      ],
+      "AUPRC_CI": [
+        0.3940209236631401,
+        0.7962795655106515
+      ],
+      "Brier_CI": [
+        0.04532469283768417,
+        0.08060339982340424
+      ]
+    },
+    "test_calibrated": {
+      "AUROC": 0.9140825035561878,
+      "AUPRC": 0.5685405402156136,
+      "Brier": 0.05988258271702095,
+      "ECE": 0.04442128233337032,
+      "MCE": 0.23974642097695845,
+      "prevalence": 0.09313725490196079,
+      "n": 204,
+      "AUROC_CI": [
+        0.8543314366998578,
+        0.9669985775248933
+      ],
+      "AUPRC_CI": [
+        0.3940209236631401,
+        0.7962795655106515
+      ],
+      "Brier_CI": [
+        0.04260989115022168,
+        0.07815196195128907
+      ]
+    }
+  },
+  "operating_points_oof": {
+    "Youden": 0.074641323400884,
+    "F1-optimal": 0.3421537117124577,
+    "Prevalence-matched": 0.25452164910636704,
+    "Sensitivity>=95%": 0.020453226545667724
+  },
+  "abstention": {
+    "cut": 0.03626510500907898,
+    "coverage": 0.8970588235294118,
+    "referred": 21,
+    "acc_retained": 0.9562841530054644,
+    "acc_referred": 0.6666666666666666
+  },
+  "n_dev_records": 1626,
+  "n_test_records": 408,
+  "n_test_scored": 204,
+  "runtime_min": 11.4645214676857
+}

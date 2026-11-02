@@ -1,0 +1,137 @@
+{
+  "internal_AUROC": {
+    "computed": 0.9140825035561878,
+    "paper": 0.914,
+    "matches": true
+  },
+  "internal_AUPRC": {
+    "computed": 0.5685405402156136,
+    "paper": 0.569,
+    "matches": true
+  },
+  "internal_ECE_raw": {
+    "computed": 0.07998492454836033,
+    "paper": 0.08,
+    "matches": true
+  },
+  "internal_ECE_calibrated": {
+    "computed": 0.04442128233337029,
+    "paper": 0.044,
+    "matches": true
+  },
+  "internal_Brier": {
+    "computed": 0.05988258271702096,
+    "paper": 0.06,
+    "matches": true
+  },
+  "internal_calibration_slope": {
+    "computed": 0.9993615928116147,
+    "paper": 1.0,
+    "matches": true
+  },
+  "internal_Brier_skill_score": {
+    "computed": 0.2910174787051083,
+    "paper": 0.29,
+    "matches": true
+  },
+  "highsens_images_cleared": {
+    "computed": 75.0,
+    "paper": 75,
+    "matches": true
+  },
+  "highsens_BE_missed": {
+    "computed": 0.0,
+    "paper": 0,
+    "matches": true
+  },
+  "conformal_single_label_n": {
+    "computed": 149.0,
+    "paper": 149,
+    "matches": true
+  },
+  "conformal_single_label_accuracy": {
+    "computed": 0.9060402684563759,
+    "paper": 0.906,
+    "matches": true
+  },
+  "conformal_referred_n": {
+    "computed": 55.0,
+    "paper": 55,
+    "matches": true
+  },
+  "conformal_referred_BE": {
+    "computed": 4.0,
+    "paper": 4,
+    "matches": true
+  },
+  "internal_errors_F1": {
+    "computed": 15.0,
+    "paper": 15,
+    "matches": true
+  },
+  "error_refer_10pct": {
+    "computed": 4.371584699453552,
+    "paper": 4.4,
+    "matches": true
+  },
+  "error_refer_20pct": {
+    "computed": 1.8404907975460123,
+    "paper": 1.8,
+    "matches": true
+  },
+  "error_refer_30pct": {
+    "computed": 0.7042253521126761,
+    "paper": 0.7,
+    "matches": true
+  },
+  "epistemic_error_detection_AUROC": {
+    "computed": 0.8977072310405643,
+    "paper": 0.898,
+    "matches": true
+  },
+  "external_AUROC": {
+    "computed": 0.8717005279155334,
+    "paper": 0.872,
+    "matches": true
+  },
+  "external_AUPRC": {
+    "computed": 0.6982761363220619,
+    "paper": 0.698,
+    "matches": true
+  },
+  "external_ECE": {
+    "computed": 0.06040796156910635,
+    "paper": 0.06,
+    "matches": true
+  },
+  "external_Brier": {
+    "computed": 0.11342349950790735,
+    "paper": 0.113,
+    "matches": true
+  },
+  "external_calibration_slope": {
+    "computed": 0.8894008706500145,
+    "paper": 0.89,
+    "matches": true
+  },
+  "external_Brier_skill_score": {
+    "computed": 0.3475980467914397,
+    "paper": 0.35,
+    "matches": true
+  },
+  "external_error_no_referral": {
+    "computed": 15.566037735849056,
+    "paper": 15.6,
+    "matches": true
+  },
+  "external_error_refer_20pct": {
+    "computed": 11.209439528023598,
+    "paper": 11.2,
+    "matches": true
+  },
+  "external_error_refer_30pct": {
+    "computed": 7.094594594594595,
+    "paper": 7.1,
+    "matches": true
+  }
+}

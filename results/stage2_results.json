@@ -1,0 +1,67 @@
+{
+  "results": [
+    {
+      "model": "fusion",
+      "task": "subtype",
+      "AUROC": 0.8698699715562779,
+      "AUROC_lo": 0.818869362047948,
+      "AUROC_hi": 0.9171144859813084,
+      "AUPRC": 0.859330225700804,
+      "Brier": 0.14276420864106384,
+      "sensitivity": 0.7608695652173914,
+      "specificity": 0.8411214953271028,
+      "MCC": 0.6050722100634591,
+      "n": 199,
+      "DeLong_p_fusion_vs_genomics": NaN
+    },
+    {
+      "model": "fusion",
+      "task": "stage",
+      "AUROC": 0.9788795020008892,
+      "AUROC_lo": 0.95730880391285,
+      "AUROC_hi": 0.995108937305469,
+      "AUPRC": 0.7884019568518977,
+      "Brier": 0.06930548030837226,
+      "sensitivity": 1.0,
+      "specificity": 0.9421965317919075,
+      "MCC": 0.8249092513487906,
+      "n": 199,
+      "DeLong_p_fusion_vs_genomics": NaN
+    },
+    {
+      "model": "genomics only",
+      "task": "subtype",
+      "AUROC": 0.866873222267371,
+      "AUROC_lo": 0.8154129418935392,
+      "AUROC_hi": 0.9140148821617228,
+      "AUPRC": 0.8655551911974095,
+      "Brier": 0.14547937482864967,
+      "sensitivity": 0.75,
+      "specificity": 0.8317757009345794,
+      "MCC": 0.5847533828946052,
+      "n": 199,
+      "DeLong_p_fusion_vs_genomics": 0.7417097854130343
+    },
+    {
+      "model": "genomics only",
+      "task": "stage",
+      "AUROC": 0.8697198755002223,
+      "AUROC_lo": 0.7914406402845708,
+      "AUROC_hi": 0.9384254112939084,
+      "AUPRC": 0.5260664308744665,
+      "Brier": 0.10077344407778689,
+      "sensitivity": 0.6538461538461539,
+      "specificity": 0.930635838150289,
+      "MCC": 0.5582868530929596,
+      "n": 199,
+      "DeLong_p_fusion_vs_genomics": 0.002387018146083059
+    }
+  ],
+  "n": 199,
+  "n_unknown_stage": 167,
+  "modality_coverage": [
+    34,
+    5,
+    180
+  ]
+}

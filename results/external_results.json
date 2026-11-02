@@ -1,0 +1,171 @@
+{
+  "external": [
+    {
+      "AUROC": 0.6571569109690114,
+      "AUPRC": 0.584851806061295,
+      "Brier": 0.2845509305354838,
+      "ECE": 0.2333882994501542,
+      "MCE": 0.43437290235520076,
+      "prevalence": 0.47029702970297027,
+      "n": 202,
+      "cohort": "BE vs esophagitis",
+      "AUROC_CI_boot": [
+        0.5753910477127399,
+        0.7274077717658632
+      ],
+      "AUROC_CI_HanleyMcNeil": [
+        0.5816071430095905,
+        0.7327066789284323
+      ],
+      "AUPRC_CI_boot": [
+        0.5137871796267615,
+        0.6726802101782929
+      ],
+      "Youden_sens": 0.8736842105263158,
+      "Youden_spec": 0.3177570093457944,
+      "F1-optimal_sens": 0.5684210526315789,
+      "F1-optimal_spec": 0.6542056074766355,
+      "Prevalence-matched_sens": 0.631578947368421,
+      "Prevalence-matched_spec": 0.5981308411214953,
+      "Sensitivity>=95%_sens": 0.968421052631579,
+      "Sensitivity>=95%_spec": 0.1308411214953271,
+      "conformal_marginal_coverage": 0.7178217821782178,
+      "conformal_coverage_class0": 0.5046728971962616,
+      "conformal_coverage_class1": 0.9578947368421052,
+      "conformal_mean_set_size": 1.2425742574257426,
+      "conformal_singleton": 0.7574257425742574,
+      "conformal_ambiguous": 0.24257425742574257,
+      "conformal_empty": 0.0,
+      "mean_epistemic": 0.039393987506628036,
+      "AURC_epistemic": 0.3007242882832346,
+      "E-AURC_epistemic": 0.21414359095075694,
+      "risk_full": 0.38613861386138615,
+      "risk_at_80pct_coverage": 0.37267080745341613
+    },
+    {
+      "AUROC": 0.6298496240601503,
+      "AUPRC": 0.5465990809475136,
+      "Brier": 0.2725060203837621,
+      "ECE": 0.2047709067788505,
+      "MCE": 0.4474060922171358,
+      "prevalence": 0.40425531914893614,
+      "n": 235,
+      "cohort": "BE vs normal_esophagus",
+      "AUROC_CI_boot": [
+        0.556531954887218,
+        0.7027086466165413
+      ],
+      "AUROC_CI_HanleyMcNeil": [
+        0.5564012186257945,
+        0.7032980294945061
+      ],
+      "AUPRC_CI_boot": [
+        0.4745969142884025,
+        0.633419432889508
+      ],
+      "Youden_sens": 0.8736842105263158,
+      "Youden_spec": 0.25,
+      "F1-optimal_sens": 0.5684210526315789,
+      "F1-optimal_spec": 0.5642857142857143,
+      "Prevalence-matched_sens": 0.631578947368421,
+      "Prevalence-matched_spec": 0.5285714285714286,
+      "Sensitivity>=95%_sens": 0.968421052631579,
+      "Sensitivity>=95%_spec": 0.10714285714285714,
+      "conformal_marginal_coverage": 0.625531914893617,
+      "conformal_coverage_class0": 0.4,
+      "conformal_coverage_class1": 0.9578947368421052,
+      "conformal_mean_set_size": 1.2127659574468086,
+      "conformal_singleton": 0.7872340425531915,
+      "conformal_ambiguous": 0.2127659574468085,
+      "conformal_empty": 0.0,
+      "mean_epistemic": 0.04682368412613869,
+      "AURC_epistemic": 0.2868378880573529,
+      "E-AURC_epistemic": 0.1749607186819794,
+      "risk_full": 0.4340425531914894,
+      "risk_at_80pct_coverage": 0.3882978723404255
+    },
+    {
+      "AUROC": 0.8717005279155334,
+      "AUPRC": 0.6982761363220619,
+      "Brier": 0.11342354271318421,
+      "ECE": 0.06040746759377701,
+      "MCE": 0.20384051735463612,
+      "prevalence": 0.2240566037735849,
+      "n": 424,
+      "cohort": "BE vs zline",
+      "AUROC_CI_boot": [
+        0.8304871220604703,
+        0.9094248920172772
+      ],
+      "AUROC_CI_HanleyMcNeil": [
+        0.8241554584589278,
+        0.9192455973721391
+      ],
+      "AUPRC_CI_boot": [
+        0.6157787078419409,
+        0.7789616674351241
+      ],
+      "Youden_sens": 0.8736842105263158,
+      "Youden_spec": 0.6869300911854104,
+      "F1-optimal_sens": 0.5684210526315789,
+      "F1-optimal_spec": 0.9240121580547113,
+      "Prevalence-matched_sens": 0.631578947368421,
+      "Prevalence-matched_spec": 0.8966565349544073,
+      "Sensitivity>=95%_sens": 0.968421052631579,
+      "Sensitivity>=95%_spec": 0.23404255319148937,
+      "conformal_marginal_coverage": 0.8537735849056604,
+      "conformal_coverage_class0": 0.8237082066869301,
+      "conformal_coverage_class1": 0.9578947368421052,
+      "conformal_mean_set_size": 1.3349056603773586,
+      "conformal_singleton": 0.6650943396226415,
+      "conformal_ambiguous": 0.33490566037735847,
+      "conformal_empty": 0.0,
+      "mean_epistemic": 0.028718795627355576,
+      "AURC_epistemic": 0.055197883368878486,
+      "E-AURC_epistemic": 0.04240032362577022,
+      "risk_full": 0.15566037735849056,
+      "risk_at_80pct_coverage": 0.11209439528023599
+    }
+  ],
+  "local_recalibration": [
+    {
+      "cohort": "BE vs esophagitis",
+      "sens_mean": 0.8191791044776119,
+      "sens_sd": 0.1073193229031445,
+      "spec_mean": 0.38439999999999996,
+      "spec_sd": 0.15258431548928394,
+      "F1_mean": 0.6517335530850612,
+      "ECE_mean": 0.1193054070045462,
+      "calib_frac": 0.3,
+      "reps": 200
+    },
+    {
+      "cohort": "BE vs normal_esophagus",
+      "sens_mean": 0.8232089552238806,
+      "sens_sd": 0.14433767661964814,
+      "spec_mean": 0.2976020408163265,
+      "spec_sd": 0.16539987735607428,
+      "F1_mean": 0.5739829707143671,
+      "ECE_mean": 0.11410832961915748,
+      "calib_frac": 0.3,
+      "reps": 200
+    },
+    {
+      "cohort": "BE vs zline",
+      "sens_mean": 0.696044776119403,
+      "sens_sd": 0.11801598809568908,
+      "spec_mean": 0.8595652173913044,
+      "spec_sd": 0.05259611779214596,
+      "F1_mean": 0.6360827863130374,
+      "ECE_mean": 0.05163839742250616,
+      "calib_frac": 0.3,
+      "reps": 200
+    }
+  ],
+  "leakage_flagged": 0,
+  "shift_auroc": {
+    "GastroVision esophagitis": 0.720634048011728,
+    "GastroVision normal_esophagus": 0.8657212885154062,
+    "GastroVision zline": 0.6277638715060492
+  }
+}
