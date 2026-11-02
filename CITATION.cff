@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite the paper below."
+title: "Calibrated Deep Learning with Conformal Deferral for Barrett's Esophagus Recognition and Multimodal Characterization of Esophageal Cancer"
+authors:
+  - family-names: Mohod
+    given-names: Ashish P.
+    affiliation: "MATS University, Raipur, India"
+    email: mohod.ashish@gmail.com
+  - family-names: Yadav
+    given-names: K. P.
+    affiliation: "MATS University, Raipur, India"
+version: 1.0.0
+date-released: 2026-11-02
+license: MIT
+repository-code: "https://github.com/AshishPMohod/esca-audit-first"
+keywords:
+  - Barrett's esophagus
+  - conformal prediction
+  - uncertainty quantification
+  - multimodal fusion
+  - data leakage
+  - missing data

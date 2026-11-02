@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+# LaTeX build files
+*.aux
+*.log
+*.out
+*.synctex.gz
+# local data, never commit raw datasets
+data/
+*.parquet
