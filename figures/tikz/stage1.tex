@@ -1,0 +1,111 @@
+\documentclass[border=3pt]{standalone}
+\input{common.tex}
+\graphicspath{{../assets/}}
+\newcommand{\photo}[3]{\node[inner sep=0pt, anchor=south west] at (#1) {\includegraphics[width=#2mm]{#3}};}
+\begin{document}
+\begin{tikzpicture}[x=1mm,y=1mm]
+\fill[sand, rounded corners=4pt] (-2,-12) rectangle (182,112);
+% =====================================================================
+% TIER A: image preparation (top)
+% =====================================================================
+\node[font=\small\bfseries, text=ink, anchor=west] at (0,108) {A \; Image preparation};
+\draw[line, line width=0.6pt] (47,108) -- (180,108);
+% (1) white-light frame
+\node[num=cor] at (2.5,101.5) {1};
+\node[font=\scriptsize\bfseries, text=ink, anchor=west] at (5.5,101.5) {White light frame};
+\photo{0,70}{29}{s1_raw.png}
+\node[smm, text width=30mm] at (14.5,66) {sample frame at the\\junction, overlay text removed};
+\draw[flow] (30,84.5) -- (34,84.5);
+% (2) specular highlights
+\node[num=cor] at (37,101.5) {2};
+\node[font=\scriptsize\bfseries, text=ink, anchor=west] at (40,101.5) {Specular highlights};
+\photo{34.5,70}{29}{s1_specular.png}
+\node[smm, text width=30mm] at (49,66) {pixels with grey level $>$ 240\\(0.9\% here, shown in green)};
+\draw[flow] (64.5,84.5) -- (68.5,84.5);
+% (3) inpainting, CLAHE and centred crop
+\node[num=cor] at (71.5,101.5) {3};
+\node[font=\scriptsize\bfseries, text=ink, anchor=west] at (74.5,101.5) {Inpaint, CLAHE, crop};
+\photo{69,70}{29}{s1_clahe_crop.png}
+\node[smm, text width=31mm] at (83.5,65.1) {Telea inpainting; CLAHE on LAB\\lightness (clip 2.0, 8$\times$8);\\centered square};
+\draw[flow] (99,84.5) -- (103,84.5);
+% (4) 14 multiscale views (real crops of this image)
+\node[num=cor] at (106,101.5) {4};
+\node[font=\scriptsize\bfseries, text=ink, anchor=west] at (109,101.5) {Fourteen multiscale views ($K=1+4+9$)};
+\photo{103.5,72.5}{24}{s1_v00.png}
+\node[smm] at (115.5,69.6) {global, 224$\times$224};
+\foreach \r in {0,1} { \foreach \c in {0,1} {
+  \node[inner sep=0pt, anchor=south west] at ({130+\c*12.4},{85.1-\r*12.4}) {\includegraphics[width=11.6mm]{s1_q\r\c.png}}; } }
+\node[smm] at (142.2,69.6) {2$\times$2 quadrants};
+\foreach \r in {0,1,2} { \foreach \c in {0,1,2} {
+  \node[inner sep=0pt, anchor=south west] at ({157+\c*8.2},{88.9-\r*8.2}) {\includegraphics[width=7.7mm]{s1_t\r\c.png}}; } }
+\node[smm] at (169.2,69.6) {3$\times$3 tiles};
+\node[smm, text width=70mm] at (142,64.4) {every view is resized to 224$\times$224 before encoding};
+% =====================================================================
+% TIER B: representation, ensemble and decision (bottom)
+% =====================================================================
+\draw[flow, rounded corners=3pt] (142,61.5) -- (142,58) -- (14,58) -- (14,55.4);
+\node[font=\small\bfseries, text=ink, anchor=west] at (0,52) {B \; Representation, ensemble and decision};
+\draw[line, line width=0.6pt] (89,52) -- (180,52);
+% (5) frozen DINOv2
+\node[num=cor] at (2.5,46) {5};
+\node[font=\scriptsize\bfseries, text=ink, anchor=west] at (5.5,46) {Frozen DINOv2 ViT-B/14};
+\photo{0,16}{24}{s1_patches.png}
+\node[smm, text width=26mm] at (12,12.4) {16$\times$16 patches of\\14$\times$14 pixels per view};
+\foreach \k in {0,...,5} { \fill[ink!\the\numexpr 92-\k*9\relax, rounded corners=0.8pt] (26.5+\k*1.6,19+\k*0.8) rectangle ++(6.4,18); }
+\node[rotate=90, font=\tiny\bfseries, text=white] at (32.6,32.2) {12 blocks};
+\node[tag=nav] at (33,41.5) {frozen, 86\,M};
+\draw[thin] (24.6,28) -- (26.2,28);
+\draw[flow] (40.5,28) -- (44,28);
+\node[smm] at (34,15.6) {[CLS] token};
+% (6) instance embeddings
+\node[num=cor] at (46.5,46) {6};
+\node[font=\scriptsize\bfseries, text=ink, anchor=west] at (49.5,46) {View embeddings};
+\photo{44.5,21}{27}{s1_embed.png}
+\node[font=\tiny, text=mute, anchor=south] at (58,31.2) {14 views $\times$ 768};
+\node[smm] at (58,18.6) {(48 of 768 dimensions shown)};
+\node[smm, text width=28mm] at (58,12.4) {projection 768$\rightarrow$256,\\LayerNorm, GELU};
+\draw[flow] (72.5,28) -- (76,28);
+% (7) aggregation and ensemble
+\node[num=cor] at (78.5,46) {7};
+\node[font=\scriptsize\bfseries, text=ink, anchor=west] at (81.5,46) {Mean pooling, 25 members};
+\foreach \s in {0,...,4} { \foreach \f in {0,...,4} {
+   \fill[cor!85] (81.5+\f*4.4,38-\s*4.4) circle (1.45); \fill[white, opacity=0.35] (81+\f*4.4,38.5-\s*4.4) circle (0.45); } }
+\node[smm, text width=26mm, align=left, anchor=west] at (103.2,32) {5 seeds $\times$\\5 folds grouped\\by source image;\\EMA weights};
+\node[smm, text width=36mm] at (93,16.4) {pooling chosen out of fold from five\\aggregators (AUPRC 0.623)};
+\node[smm] at (93,11) {$\mathbf{z}=\frac{1}{K}\sum_k\phi(\mathbf{x}_k)$};
+\draw[flow] (119.5,28) -- (123,28);
+% (8) calibration and uncertainty
+\node[num=cor] at (125.5,46) {8};
+\node[font=\scriptsize\bfseries, text=ink, anchor=west] at (128.5,46) {Calibration};
+\begin{scope}[shift={(125,21)}]
+  \draw[line, line width=0.4pt] (0,0) rectangle (17,17);
+  \draw[mute, dashed, line width=0.3pt] (0,0) -- (17,17);
+  \draw[mute!80, line width=0.8pt] plot[smooth] coordinates {(0,0) (4,0.5) (8,2.3) (12,6) (17,16)};
+  \draw[cor, line width=1.1pt] plot[smooth] coordinates {(0,0) (4,3.9) (8,7.7) (12,11.6) (17,16.7)};
+  \node[font=\tiny, text=mute, anchor=west] at (0.6,15.3) {raw};
+  \node[font=\tiny, text=cor, anchor=west] at (0.6,12.8) {Platt};
+\end{scope}
+\node[smm] at (133.5,17.6) {ECE 0.080 $\rightarrow$ 0.044};
+\node[smm, text width=24mm] at (133.5,11.6) {50 Monte Carlo dropout\\passes per member};
+\draw[flow] (144,28) -- (147.5,28);
+% (9) triage
+\node[num=cor] at (150,46) {9};
+\node[font=\scriptsize\bfseries, text=ink, anchor=west] at (153,46) {Output and triage};
+\shade[left color=sea!35, right color=cor!80, rounded corners=1pt] (149,38.6) rectangle (180,41.2);
+\foreach \t/\l in {0.020/S, 0.075/Y, 0.255/P, 0.342/F} { \draw[ink, line width=0.5pt] ({149+31*\t},38.1) -- ({149+31*\t},41.7); }
+\node[font=\fontsize{4.4}{5}\selectfont, text=mute, anchor=north west] at (148.6,37.8) {0};
+\node[font=\fontsize{4.4}{5}\selectfont, text=mute, anchor=north east] at (180.4,37.8) {1};
+\node[font=\fontsize{4.4}{5}\selectfont, text=mute, anchor=north] at (164.5,37.8) {ticks: four thresholds fixed out of fold};
+\node[font=\tiny, text=ink, anchor=west] at (149.4,43.4) {calibrated $\hat{p}(\mathrm{BE})$, $U_{\mathrm{ep}}$, conformal set};
+\foreach \i/\t/\c/\o in {0/\{BE\}/cor/accept, 1/\{normal\}/sea/accept, 2/{\{BE, normal\} or $\varnothing$}/plum/defer, 3/{high $U_{\mathrm{ep}}$ or shift}/gold/defer} {
+  \node[draw=\c, fill=\c!12, line width=0.6pt, rounded corners=1.5pt, font=\tiny, text=ink, minimum width=20mm, minimum height=4.2mm, anchor=west] at (149,31.4-\i*5.0) {\t};
+  \node[font=\tiny\bfseries, text=\c!85!black, anchor=west] at (170.2,31.4-\i*5.0) {\o};
+}
+\node[smm, text width=33mm] at (164.5,9.2) {sets with one label are accepted;\\ambiguous cases and cases outside\\the scope go to the endoscopist};
+% footer
+\fill[goldl, rounded corners=3pt] (0,-10.6) rectangle (180,4.2);
+\photo{2,-9.4}{12.4}{s1_attention.png}
+\node[font=\tiny, text=ink, anchor=west, text width=82mm, align=left] at (16,-3.2) {\textbf{Where attention concentrates.} Measured attention of the TransMIL comparator on BE test images, overlaid on the 3$\times$3 tiles of this frame (darker coral means a higher share; center tile 1.42$\times$ uniform).};
+\node[font=\tiny, text=ink, anchor=west, text width=78mm, align=left] at (100,-3.2) {\textbf{Out of fold only.} The aggregator, calibrator, four thresholds and conformal quantiles are fitted on development predictions; test and external images never influence them.};
+\end{tikzpicture}
+\end{document}

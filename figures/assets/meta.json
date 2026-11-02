@@ -1,0 +1,30 @@
+{
+ "specular_fraction": 0.008619740833179568,
+ "attention_3x3_BE": [
+  [
+   0.57,
+   1.17,
+   0.72
+  ],
+  [
+   0.83,
+   1.42,
+   1.07
+  ],
+  [
+   0.95,
+   1.04,
+   1.16
+  ]
+ ],
+ "ct_slice": 84,
+ "ct_crop_hw": [
+  326,
+  445
+ ],
+ "esophagus_xy_frac": [
+  0.5191011235955056,
+  0.5705521472392638
+ ],
+ "pet_note": "simulated FDG uptake for illustration only"
+}

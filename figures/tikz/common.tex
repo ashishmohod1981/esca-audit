@@ -1,0 +1,35 @@
+\usepackage[T1]{fontenc}
+\AtBeginDocument{\hyphenpenalty=10000 \exhyphenpenalty=10000 \pretolerance=-1 \tolerance=9999}
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{amsmath,amssymb}
+\usepackage[eulergreek]{sansmath}
+\sansmath
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,calc,shapes.geometric,shapes.symbols,shapes.misc,backgrounds,patterns,decorations.pathreplacing,shadows.blur}
+% ---------------- palette (distinct from the earlier manuscript)
+\definecolor{ink}{HTML}{1D2B3A}
+\definecolor{mute}{HTML}{6B7280}
+\definecolor{line}{HTML}{CBD2D9}
+\definecolor{sand}{HTML}{F7F3EC}
+\definecolor{cor}{HTML}{E76F51}   % Stage 1 (endoscopy)
+\definecolor{corl}{HTML}{FCE9E3}
+\definecolor{sea}{HTML}{2A9D8F}   % Stage 2 (CT, PET, genomics)
+\definecolor{seal}{HTML}{E0F2EF}
+\definecolor{gold}{HTML}{D9A42B}  % data-integrity audits
+\definecolor{goldl}{HTML}{FBF1D9}
+\definecolor{nav}{HTML}{264653}   % reliability layer
+\definecolor{navl}{HTML}{E3EAEE}
+\definecolor{plum}{HTML}{8E5572}  % outputs to clinician
+\definecolor{pluml}{HTML}{F3E8EE}
+\tikzset{
+  >={Stealth[length=2.4mm,width=1.8mm]},
+  flow/.style={->, line width=0.9pt, draw=ink!70},
+  thin/.style={->, line width=0.6pt, draw=mute},
+  card/.style={draw=#1, line width=0.7pt, fill=white, rounded corners=3pt, blur shadow={shadow blur steps=5, shadow xshift=0.4mm, shadow yshift=-0.4mm, shadow opacity=18}},
+  tag/.style={fill=#1, text=white, font=\tiny\bfseries, rounded corners=1.6pt, inner sep=1.6pt},
+  hdr/.style={font=\scriptsize\bfseries, text=#1},
+  sm/.style={font=\tiny, text=ink, align=center},
+  smm/.style={font=\tiny, text=mute, align=center},
+  num/.style={circle, fill=#1, text=white, font=\tiny\bfseries, inner sep=0.9pt, minimum size=4mm},
+}
